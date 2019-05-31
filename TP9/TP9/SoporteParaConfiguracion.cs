@@ -23,7 +23,7 @@ namespace Helpers
                 File.Create(archivoConfig);
             }
 
-            BinaryWriter binario = new BinaryWriter(File.Open(archivoConfig, FileMode.Open));
+            BinaryWriter binario = new BinaryWriter(File.OpenWrite(archivoConfig));
 
             binario.Write(rutaCarpeta);
             binario.Close();

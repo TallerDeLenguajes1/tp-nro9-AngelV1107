@@ -4,3 +4,10 @@ C:\Users\Alumno\Documents\taller1\tp-nro9-AngelV1107\TP9\TP9\bin\Debug\TP9.pdb
 C:\Users\Alumno\Documents\taller1\tp-nro9-AngelV1107\TP9\TP9\obj\Debug\TP9.csprojResolveAssemblyReference.cache
 C:\Users\Alumno\Documents\taller1\tp-nro9-AngelV1107\TP9\TP9\obj\Debug\TP9.exe
 C:\Users\Alumno\Documents\taller1\tp-nro9-AngelV1107\TP9\TP9\obj\Debug\TP9.pdb
+C:\Users\Angel\MasterFolder\FACET\taller1\tp-nro9-AngelV1107\TP9\TP9\bin\Debug\TP9.exe.config
+C:\Users\Angel\MasterFolder\FACET\taller1\tp-nro9-AngelV1107\TP9\TP9\bin\Debug\TP9.exe
+C:\Users\Angel\MasterFolder\FACET\taller1\tp-nro9-AngelV1107\TP9\TP9\bin\Debug\TP9.pdb
+C:\Users\Angel\MasterFolder\FACET\taller1\tp-nro9-AngelV1107\TP9\TP9\obj\Debug\TP9.csprojResolveAssemblyReference.cache
+C:\Users\Angel\MasterFolder\FACET\taller1\tp-nro9-AngelV1107\TP9\TP9\obj\Debug\TP9.csproj.CoreCompileInputs.cache
+C:\Users\Angel\MasterFolder\FACET\taller1\tp-nro9-AngelV1107\TP9\TP9\obj\Debug\TP9.exe
+C:\Users\Angel\MasterFolder\FACET\taller1\tp-nro9-AngelV1107\TP9\TP9\obj\Debug\TP9.pdb

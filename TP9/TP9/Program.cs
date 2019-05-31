@@ -12,34 +12,69 @@ namespace TP9
     {
         static void Main(string[] args)
         {
-            string rutaCarpetaDestino;
+            string rutaCarpetaDestino = @"C:\Carpeta-Morse";
 
-            SoporteParaConfiguracion.CrearArchivoDeConfiguracion(@"C:\Taller1-TP9-CarpetaMorse");
+            PrepararCarpeta(rutaCarpetaDestino);
 
-            rutaCarpetaDestino = SoporteParaConfiguracion.LeerConfiguracion();
+            //string cadena = "The quick brown fox jumped over the lazy dog 0123456789";
+            //string cadena_morse = ConversorDeMorse.TextoAMorse(cadena);
 
-            //Console.WriteLine(rutaCarpetaDestino);
+            //Console.WriteLine(cadena.ToUpper());
+            //Console.WriteLine(ConversorDeMorse.MorseATexto(cadena_morse));
 
-            foreach (string rutaArchivo in Directory.GetFiles(Directory.GetCurrentDirectory()))
+            CrearArchivoMorse();
+
+            Console.ReadKey();
+        }
+
+        public static void PrepararCarpeta(string rutaCarpetaDestino)
+        {
+            try
             {
-                //Console.WriteLine(archivo);
-                if ((Path.GetExtension(rutaArchivo) == ".mp3") || (Path.GetExtension(rutaArchivo) == ".txt"))
+                SoporteParaConfiguracion.CrearArchivoDeConfiguracion(rutaCarpetaDestino);
+
+                rutaCarpetaDestino = SoporteParaConfiguracion.LeerConfiguracion();
+
+                foreach (string rutaArchivo in Directory.GetFiles(Directory.GetCurrentDirectory()))
                 {
-                    if (!File.Exists(rutaCarpetaDestino + @"\" + Path.GetFileName(rutaArchivo)))
+                    if ((Path.GetExtension(rutaArchivo) == ".mp3") || (Path.GetExtension(rutaArchivo) == ".txt"))
                     {
-                        string rutaArchivoDestino = rutaCarpetaDestino + @"\" + Path.GetFileName(rutaArchivo);
+                        if (!File.Exists(rutaCarpetaDestino + @"\" + Path.GetFileName(rutaArchivo)))
+                        {
+                            string rutaArchivoDestino = rutaCarpetaDestino + @"\" + Path.GetFileName(rutaArchivo);
 
-                        Console.WriteLine("Copiando {0} a {1}", Path.GetFileName(rutaArchivo), rutaArchivoDestino);
+                            Console.WriteLine("Copiando {0} a {1}", Path.GetFileName(rutaArchivo), rutaArchivoDestino);
 
-                        File.Copy(rutaArchivo, rutaArchivoDestino);
+                            File.Copy(rutaArchivo, rutaArchivoDestino);
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex);
+                throw;
+            }
+        }
 
-            
-            
+        public static void CrearArchivoMorse()
+        {
+            Console.WriteLine("Escriba el texto que desea convertir a morse");
+            string texto = Console.ReadLine();
 
-            Console.ReadKey();
+            string cadena_morse = ConversorDeMorse.TextoAMorse(texto);
+
+            string rutaArchivo;
+            string nombreArchivo;
+
+            nombreArchivo = "morse_" + DateTime.Now.ToString() + ".txt";
+            nombreArchivo = nombreArchivo.Replace('/', '-');
+            nombreArchivo = nombreArchivo.Replace(' ', '_');
+            nombreArchivo = nombreArchivo.Replace(':', '-');
+
+            rutaArchivo = SoporteParaConfiguracion.LeerConfiguracion() + @"\" + nombreArchivo;
+
+            Console.WriteLine(rutaArchivo);
         }
     }
 }
