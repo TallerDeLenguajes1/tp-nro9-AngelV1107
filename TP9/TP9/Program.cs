@@ -12,18 +12,15 @@ namespace TP9
     {
         static void Main(string[] args)
         {
-            string rutaCarpetaDestino = @"C:\Carpeta-Morse";
+            string rutaCarpetaDestino = @"D:\Carpeta-Morse";
 
             PrepararCarpeta(rutaCarpetaDestino);
 
-            //string cadena = "The quick brown fox jumped over the lazy dog 0123456789";
-            //string cadena_morse = ConversorDeMorse.TextoAMorse(cadena);
+            string ruta_archivo_morse = ConversorDeMorse.CrearArchivoMorse();
+            ConversorDeMorse.LeerArchivoMorse(ruta_archivo_morse);
 
-            //Console.WriteLine(cadena.ToUpper());
-            //Console.WriteLine(ConversorDeMorse.MorseATexto(cadena_morse));
-
-            CrearArchivoMorse();
-
+            ConversorDeMorse.CrearAudio(ruta_archivo_morse);
+            
             Console.ReadKey();
         }
 
@@ -32,7 +29,6 @@ namespace TP9
             try
             {
                 SoporteParaConfiguracion.CrearArchivoDeConfiguracion(rutaCarpetaDestino);
-
                 rutaCarpetaDestino = SoporteParaConfiguracion.LeerConfiguracion();
 
                 foreach (string rutaArchivo in Directory.GetFiles(Directory.GetCurrentDirectory()))
@@ -57,24 +53,6 @@ namespace TP9
             }
         }
 
-        public static void CrearArchivoMorse()
-        {
-            Console.WriteLine("Escriba el texto que desea convertir a morse");
-            string texto = Console.ReadLine();
-
-            string cadena_morse = ConversorDeMorse.TextoAMorse(texto);
-
-            string rutaArchivo;
-            string nombreArchivo;
-
-            nombreArchivo = "morse_" + DateTime.Now.ToString() + ".txt";
-            nombreArchivo = nombreArchivo.Replace('/', '-');
-            nombreArchivo = nombreArchivo.Replace(' ', '_');
-            nombreArchivo = nombreArchivo.Replace(':', '-');
-
-            rutaArchivo = SoporteParaConfiguracion.LeerConfiguracion() + @"\" + nombreArchivo;
-
-            Console.WriteLine(rutaArchivo);
-        }
+        
     }
 }

@@ -13,20 +13,45 @@ namespace Helpers
 
         public static void CrearArchivoDeConfiguracion(string rutaCarpeta)
         {
+
             if (!Directory.Exists(rutaCarpeta))
             {
-                Directory.CreateDirectory(rutaCarpeta);
+                try
+                {
+                    Directory.CreateDirectory(rutaCarpeta);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    throw;
+                }
             }
 
             if (!File.Exists(archivoConfig))
             {
-                File.Create(archivoConfig);
+                try
+                {
+                    File.Create(archivoConfig);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    throw;
+                }
             }
-
-            BinaryWriter binario = new BinaryWriter(File.OpenWrite(archivoConfig));
-
-            binario.Write(rutaCarpeta);
-            binario.Close();
+            try
+            {
+                BinaryWriter binario = new BinaryWriter(File.OpenWrite(archivoConfig));
+                binario.Write(rutaCarpeta);
+                binario.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
 
         public static string LeerConfiguracion()
